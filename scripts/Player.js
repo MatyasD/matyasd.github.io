@@ -13,14 +13,32 @@ class Player {
 
         playerDiv.style.left = `${this.x}px`;
         playerDiv.style.top = `${this.y}px`;
+
+
     }
 
     shoot() {
-        let bullDirection = Math.atan2(mouseY - this.y, mouseX - this.x);
-        let bullet = new Bullet(this.x, this.y, bullDirection, 15);
+
+        let bulletPoint = document.querySelector(".bullet-point");
+        let bulletPointPos = {
+            x: bulletPoint.getBoundingClientRect().left,
+            y: bulletPoint.getBoundingClientRect().top
+        }
+
+        console.log(bulletPointPos)
+
+        // let offset = (Math.random() - 0.5) * Math.PI / 15;
+        // přičíst offset pro spread
+        let bullDirection = Math.atan2(mouseY - bulletPointPos.y, mouseX - bulletPointPos.x);
+
+
+
+        let bullet = new Bullet(bulletPointPos.x, bulletPointPos.y, bullDirection, 15);
         bullet.createBullet();
         this.bullets.push(bullet);
-        console.log(this.bullets)
+        console.log("Player x: " + this.x)
+        console.log("Player y: " + this.y)
+        //console.log("MouseX: " + mouseX)
+        //console.log("MouseY: " + mouseY)
     }
 }
-

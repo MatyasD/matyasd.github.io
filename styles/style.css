@@ -16,7 +16,6 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     user-select: none;
-
 }
 
 #player img {
@@ -28,14 +27,15 @@ body {
     height: 150px;
 }
 
-#player .rotation-point {
+#player .bullet-point {
     position: relative;
-    width: 1px;
-    height: 1px;
-    background-color: yellow;
-    bottom: 125px;
-    left: 85px;
-    z-index: 10;
-    margin: 0;
+    left: 98px;
+    top: 0;
     display: inline-block;
+    z-index: 2;
+}
+
+.bullet {
+    width: 50px;
+    user-select: none;
 }

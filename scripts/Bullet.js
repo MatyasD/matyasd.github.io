@@ -13,19 +13,27 @@ class Bullet {
 
         this.el.src = this.path;
         this.el.setAttribute("class", "bullet");
+        this.el.setAttribute("draggable", "false")
         this.el.style.position = 'absolute';
-        this.el.style.left = `${this.x}px`;
-        this.el.style.top = `${this.y}px`;
         this.el.style.transform = `rotate(${angle}deg)`;
+
+        //this.el.style.border = "1px solid"
+
+
+
         body.appendChild(this.el);
     }
 
     moveToDirection() {
+
+
         this.x += Math.cos(this.direction) * this.speed;
         this.y += Math.sin(this.direction) * this.speed;
 
-        this.el.style.top = `${this.y}px`;
-        this.el.style.left = `${this.x}px`;
+        console.log("------------------------------------")
+        console.log(this.el.offsetWidth)
+        this.el.style.top = `${this.y - (this.el.offsetHeight / 2)}px`;
+        this.el.style.left = `${this.x - (this.el.offsetWidth / 2)}px`;
 
         if ((this.x - 1000) > 1000 || (this.x + 1000) < -1000) {
             this.el.remove();
@@ -34,6 +42,9 @@ class Bullet {
             this.el.remove();
             player.bullets.splice(player.bullets.findIndex(({ y }) => y == this.y), 1)
         }
+
+        // console.log("bullet left: " + this.el.style.left)
+        // console.log("bullet top: " + this.el.style.top)
 
     }
 
