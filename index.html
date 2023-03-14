@@ -8,6 +8,8 @@
     , initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
+
+    <script src="scripts/Gun.js"></script>
 </head>
 
 <body>
@@ -19,6 +21,22 @@
         <img class="player-img" src="assets/char1/char1.png" draggable="false">
         <div class="bullet-point"></div>
     </div>
+
+    <div id="hpInfo">
+        <h1 id="hpInfoText">0</h1>
+    </div>
+
+    <div id="ammoInfo">
+        <h2 id="reloadTimer"></h2>
+        <h1 id="ammoInfoText">0 / 0</h1>
+    </div>
+
+    <div class="map">
+        <div class="barrier">
+
+        </div>
+    </div>
+
 
     <script src="scripts/characterMovement.js"></script>
     <script src="scripts/Bullet.js"></script>

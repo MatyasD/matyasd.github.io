@@ -30,8 +30,7 @@ class Bullet {
         this.x += Math.cos(this.direction) * this.speed;
         this.y += Math.sin(this.direction) * this.speed;
 
-        console.log("------------------------------------")
-        console.log(this.el.offsetWidth)
+
         this.el.style.top = `${this.y - (this.el.offsetHeight / 2)}px`;
         this.el.style.left = `${this.x - (this.el.offsetWidth / 2)}px`;
 
@@ -47,5 +46,19 @@ class Bullet {
         // console.log("bullet top: " + this.el.style.top)
 
     }
+
+    checkCollisions() {
+
+        let testObj = document.getElementsByClassName("barrier");
+
+
+        for (let i = 0; i < testObj.length; i++) {
+            if (this.el.getBoundingClientRect().right >= testObj[i].getBoundingClientRect().left && this.el.getBoundingClientRect().left <= testObj[i].getBoundingClientRect().right && this.el.getBoundingClientRect().bottom >= testObj[i].getBoundingClientRect().top && this.el.getBoundingClientRect().top <= testObj[i].getBoundingClientRect().bottom) {
+                this.el.remove();
+            }
+        }
+
+    }
+
 
 }

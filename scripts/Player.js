@@ -1,8 +1,14 @@
 class Player {
-    constructor(x, y) {
+    constructor(x, y, hp, gun) {
         this.x = x;
         this.y = y;
+        this.hp = hp;
+        this.gun = gun;
         this.bullets = [];
+    }
+
+    showHp() {
+        let hpInfoEl = document.getElementById("hpInfoText").innerHTML = `${this.hp}`;
     }
 
     move() {
@@ -14,31 +20,9 @@ class Player {
         playerDiv.style.left = `${this.x}px`;
         playerDiv.style.top = `${this.y}px`;
 
-
     }
 
-    shoot() {
-
-        let bulletPoint = document.querySelector(".bullet-point");
-        let bulletPointPos = {
-            x: bulletPoint.getBoundingClientRect().left,
-            y: bulletPoint.getBoundingClientRect().top
-        }
-
-        console.log(bulletPointPos)
-
-        // let offset = (Math.random() - 0.5) * Math.PI / 15;
-        // přičíst offset pro spread
-        let bullDirection = Math.atan2(mouseY - bulletPointPos.y, mouseX - bulletPointPos.x);
 
 
 
-        let bullet = new Bullet(bulletPointPos.x, bulletPointPos.y, bullDirection, 15);
-        bullet.createBullet();
-        this.bullets.push(bullet);
-        console.log("Player x: " + this.x)
-        console.log("Player y: " + this.y)
-        //console.log("MouseX: " + mouseX)
-        //console.log("MouseY: " + mouseY)
-    }
 }

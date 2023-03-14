@@ -7,19 +7,24 @@ let img = document.querySelector(".player-img");
 
 window.addEventListener("keydown", function (e) {
     keyPresses[e.key] = true;
+    if (e.key == "r") {
+        player.gun.reload();
+    }
 })
 
 window.addEventListener("keyup", function (e) {
     keyPresses[e.key] = false;
 })
 
-
+window.addEventListener("click", function (e) {
+    player.gun.shoot()
+})
 
 window.addEventListener("mousedown", function (e) {
     shootInterval = setInterval(function () {
-        player.shoot()
+        player.gun.shoot()
 
-    }, 50)
+    }, player.gun.fireRate)
 })
 
 window.addEventListener("mouseup", function (e) {
@@ -41,10 +46,9 @@ document.addEventListener("mousemove", e => {
         y: img.getBoundingClientRect().top + img.getBoundingClientRect().height / 2
     };
     angle = Math.atan2(mouseX - imgCenter.x, - (mouseY - imgCenter.y)) * (180 / Math.PI);
-    //img.style.transform = `rotate(${angle}deg)`;
-    //contour.style.transform = `rotate(${angle}deg)`;
+
     playerDiv.style.transform = `rotate(${angle}deg)`;
-    console.log("Angle: " + angle)
+
     mouseX = e.clientX;
     mouseY = e.clientY;
 })
